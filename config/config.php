@@ -1,13 +1,13 @@
 <?php 
 $config = array(
-        "name" => "Minical Extension Boilerplate",
-        "description" => "It is a sample boilerplate extension it contains the basic structure of a typical extension. It will show you the list of bookings.",
+        "name" => "SPD View Generator",
+        "description" => "An extension that offers daily SPD generator",
         "is_default_active" => 1,
         "version" => "1.0.0", // version of extension
         "logo" => "image/logo.png", // extension's log image
         "view_link" => "sample_page", // view icon link
         "setting_link" => "sample_page", // setting icon link
-        "categories" => array("payment_process"), // category of extension
+        "categories" => array("report"), // category of extension
         "marketplace_product_link" => ""
     
     );
