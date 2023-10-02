@@ -14,11 +14,11 @@ class Show_booking extends MY_Controller
 	
     function show_latest_bookings(){
 
-        $data['bookings'] = $this->Bookings_model->get_bookings();
+        $data['bookings'] = $this->Bookings_model->get_bookings_for_today();
         $files = get_asstes_files($this->module_assets_files, $this->module_name, $this->controller_name, $this->function_name);
 
         $data['menu_on'] = TRUE;
-        $data['selected_menu'] = 'bookings';
+        $data['selected_menu'] = 'SPD';
         $data['main_content'] = '../extensions/'.$this->module_name.'/views/booking';
 
         // library function call

@@ -8,9 +8,11 @@ class Bookings_model extends CI_Model {
     }
     
 
-    function get_bookings()
+    function get_bookings_for_today()
     {
         $company_id = $this->session->userdata('current_company_id');
+
+        $today = date('Y-m-d'); // Get today's date
         
         $sql_query ="SELECT b.rate,b.booking_id,bb.room_id,bb.check_in_date, bb.check_out_date, r.room_name, c.customer_name, c.email
                 from booking b, booking_block bb, room r, customer c
@@ -18,6 +20,14 @@ class Bookings_model extends CI_Model {
                 and bb.room_id=r.room_id
                 and b.booking_customer_id=c.customer_id
                 and b.company_id=$company_id order by b.booking_id DESC LIMIT 20" ;
+
+        $sql_query ="SELECT b.rate, b.booking_id, bb.room_id, bb.check_in_date, bb.check_out_date, r.room_name, c.customer_name, c.email
+                FROM booking b
+                JOIN booking_block bb ON b.booking_id = bb.booking_id
+                JOIN room r ON bb.room_id = r.room_id
+                JOIN customer c ON b.booking_customer_id = c.customer_id
+                WHERE b.company_id = $company_id
+                AND bb.check_out_date >= '$today'";
         
         $booking_data = $this->db->query($sql_query);    
             if ($this->db->_error_message()) 

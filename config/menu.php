@@ -1,3 +1,3 @@
 <?php 
-$module_menu = array();
+$module_menu = array('SPD');
 
